@@ -7,6 +7,8 @@ const homeController = require("../controllers/homeController")
 
 //ホームコントローラーのnewThreadを呼んでいる
 router.get("/:category/new", homeController.newThread)
+//ホームコントローラーのcreateThreadを呼んでいる
+router.post("/category/create", homeController.createThread)
 //ホームコントローラーのcategoryを呼んでいる
 router.get("/:category", homeController.category)
 //ホームコントローラーのindexを呼んでいる
