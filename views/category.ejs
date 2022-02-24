@@ -4,5 +4,15 @@
 </div>
 
 <div>
+    <a href="<%= category %>/new">
+        <h2>create new thread</h2>
+    </a>
 
+    <% threads.forEach(thread => { %>
+        <div>
+            <a href="/<%= category %>/<%= thread.title %>">
+                <h3><%= thread.title %></h3>
+            </a>
+        </div>
+    <% }) %>
 </div>
