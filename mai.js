@@ -4,7 +4,8 @@
 
 const express = require("express")
 const app = express()
-//const router = require(".router/index")
+//ルーター
+const router = require("./routes/index")
 const layouts = require("express-ejs-layouts")
 const mongoose = require("mongoose")
 
@@ -24,6 +25,7 @@ app.use(
         extended: false
     })
 )
+
 
 app.use("/", router)
 
