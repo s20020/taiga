@@ -24,3 +24,9 @@ app.use(
         extended: false
     })
 )
+
+app.use("/", router)
+
+const server = app.listen(app.get("port"), () => {
+    console.log(`Start http://localhost:${app.get("port")}`)
+})
