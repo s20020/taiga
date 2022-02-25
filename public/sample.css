@@ -1,0 +1,29 @@
+h1 {
+    font-size: 50px;
+}
+body {
+    text-align: center;
+}
+h1.title{
+    background: coral;
+}
+
+a {
+    text-decoration: none;
+}
+
+/*------*/
+a.btn--orange,
+.btn--orange {
+    color: #fff;
+    background-color: #eb6100;
+    margin-bottom: 8px;
+    font-size: 40px;
+    border-radius: 10px 10px 10px 10px;
+}
+a.btn--orange,
+.btn--orange:hover {
+    color: #fff;
+    background: #f56500;
+}
+/*-----*/
