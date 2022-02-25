@@ -2,16 +2,20 @@
 
 <div>
     <h1>カテゴリ</h1>
-    <h1><%= category %></h1>
+
+    <div class="btn--orange">
+        <h1><%= category %></h1>
+    </div>
+
 </div>
 
 <div>
     <a href="<%= category %>/new">
-        <h2>create new thread</h2>
+        <h2>cスレッドを作成</h2>
     </a>
 
     <% threads.forEach(thread => { %>
-        <div>
+        <div class="btn--bule">
             <a href="/<%= category %>/<%= thread.title %>">
                 <h3><%= thread.title %></h3>
             </a>

@@ -27,3 +27,27 @@ a.btn--orange,
     background: #f56500;
 }
 /*-----*/
+
+.btn--bule a,
+.btn--bule {
+    margin: 10px auto;
+    width: 400px;
+
+    background-color: blue;
+    margin-bottom: 8px;
+    font-size: 40px;
+    border-radius: 10px 10px 10px 10px;
+}
+a.btn--bule,
+.btn--bule:hover {
+    color: #fff;
+}
+.btn--bule h3 {
+    color: white;
+}
+
+form input {
+    font-size: 50px;
+    width: 300px;
+    height: auto;
+}
