@@ -7,10 +7,18 @@ const app = express()
 //ルーター
 const router = require("./routes/index")
 const layouts = require("express-ejs-layouts")
+const passport = require("passport")
+const connectFlash = require("express-flash")
 const mongoose = require("mongoose")
+const User = require("./models/user")
+const expressSession = require("express-session")
+
+const methodOverride = require("method-override")
+const cookieParser = require("cookie-parser")
+
 
 mongoose.Promise = global.Promise
-mongoose.connect("mongodb://0.0.0.0:27017/taiga")
+mongoose.connect("mongodb://0.0.0.0:27017/taiga_1")
     .then( () => {console.log("successfully! connect mongoose")})
     .catch(error => { throw error})
 
@@ -25,6 +33,40 @@ app.use(
         extended: false
     })
 )
+
+app.use(
+    methodOverride("_method", {
+        method: [ "POST", "GET"]
+    })
+)
+
+app.use(express.json())
+app.use(cookieParser("secret_passcode"))
+app.use(
+    expressSession ( {
+        secret: "secret_passcode",
+        cookie: {
+            maxAge: 4000000
+        },
+        resave: false,
+        saveUninitialized: false
+    })
+
+)
+
+app.use(passport.initialize())
+app.use(passport.session())
+passport.use(User.createStrategy())
+passport.serializeUser(User.serializeUser())
+passport.deserializeUser(User.deserializeUser())
+app.use(connectFlash())
+
+app.use((req, res, next) => {
+    res.locals.loggedIn = req.isAuthenticated()
+    res.locals.currentUser = req.user
+    res.locals.flashMessages = req.flash()
+    next()
+})
 
 
 app.use("/", router)

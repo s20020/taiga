@@ -68,7 +68,7 @@ module.exports = {
         const params = {
             //スレッド作成をした時に、一緒にタグ付けられる
             message: req.body.message,
-            user: req.body.user
+            userName: req.body.user
         }
         Message.create(params)
             .then( () => {
