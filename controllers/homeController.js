@@ -1,5 +1,6 @@
 const mongoose = require(`mongoose`)
 const Thread = require("../models/thread")
+const messageSchema = require("../models/messageSchema")
 
 //一つひとつが関数
 module.exports = {
@@ -39,6 +40,48 @@ module.exports = {
                 res.locals.redirect = `/${req.params.category}`
                 next()
             })
+    },
+
+    thread: (req, res, next) => {
+        const category = req.params.category
+        const thread = req.params.thread
+        console.log(category)
+        const Message = mongoose.model(`${category}-${thread}`, messageSchema)
+        Message.find({})
+            .then(messages => {
+
+                res.locals.messages = messages
+                res.locals.category = category
+                res.locals.thread = thread
+                console.log(messages)
+                res.render("thread")
+            })
+            .catch(error=> {
+                res.render("index")
+            })
+    },
+
+    createMessage: (req, res, next) => {
+        const category = req.params.category
+        const thread = req.params.thread
+        const Message = mongoose.model(`${category}-${thread}`, messageSchema)
+        const params = {
+            //スレッド作成をした時に、一緒にタグ付けられる
+            message: req.body.message,
+            user: req.body.user
+        }
+        Message.create(params)
+            .then( () => {
+                console.log("successfully create new thread")
+                res.locals.redirect = `/${category}/${thread}`
+                next()
+            })
+    },
+
+    newMessage: (req, res, next) => {
+    res.locals.category = req.params.category
+    res.locals.thread = req.params.thread
+    res.render("newMessage")
     },
 
     redirectView: (req, res, next) => {

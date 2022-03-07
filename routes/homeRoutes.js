@@ -5,13 +5,16 @@
 const router = require("express").Router()
 const homeController = require("../controllers/homeController")
 
-//ホームコントローラーのnewThreadを呼んでいる
+
+
 router.get("/:category/new", homeController.newThread)
-//ホームコントローラーのcreateThreadを呼んでいる
 router.post("/:category/create", homeController.createThread, homeController.redirectView)
-//ホームコントローラーのcategoryを呼んでいる
+
+router.get("/:category/:thread/new", homeController.newMessage)
+router.post("/:category/:thread/create", homeController.createMessage, homeController.redirectView)
+
+router.get("/:category/:thread", homeController.thread)
 router.get("/:category", homeController.category)
-//ホームコントローラーのindexを呼んでいる
 router.get("/", homeController.index)
 
 module.exports = router
