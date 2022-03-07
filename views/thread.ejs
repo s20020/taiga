@@ -2,10 +2,10 @@
 
     <h1>test</h1>
     <a href="./<%= thread %>/new">new</a>
-    <% messages.forEach( ( message, i) => { %>
+    <% letters.forEach( ( message, i) => { %>
         <div>
-            <p><%= i %></p>
-            <p><%= message.userName %></p>
+
+            <p><%= i %>　　<%= message.userName %></p>
             <h3><%= message.message %></h3>
         </div>
 

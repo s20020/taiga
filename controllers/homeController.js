@@ -47,10 +47,11 @@ module.exports = {
         const thread = req.params.thread
         console.log(category)
         const Message = mongoose.model(`${category}-${thread}`, messageSchema)
+
         Message.find({})
             .then(messages => {
 
-                res.locals.messages = messages
+                res.locals.letters = messages
                 res.locals.category = category
                 res.locals.thread = thread
                 console.log(messages)
