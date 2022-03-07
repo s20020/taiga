@@ -10,6 +10,16 @@
 <a href="/">ホームに戻る</a>
     <div>
         <h1 class="title">ゲームボード掲示板</h1>
+        <% if (loggedIn) { %>
+            loged in now
+            <a href="/users/logout">
+                logout
+            </a>
+        <% } else { %>
+            <a href="/users/login">
+                login
+            </a>
+        <% } %>
     </div>
     <div class="container">
         <%- body %>
