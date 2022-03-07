@@ -1,4 +1,4 @@
-
+<% if (loggedIn) {%>
 <div>
     <form action="/<%= category %>/create" method="POST">
         <input type = "text" name ="title" placeholder ="タイトル" autofocus><br/>
@@ -6,3 +6,4 @@
         <button type="submit">作成</button>
     </form>
 </div>
+<% } %>
